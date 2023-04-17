@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4838421622160124790}
   - component: {fileID: 4838421622160124789}
   - component: {fileID: 4838421622160124788}
+  - component: {fileID: 368635212339106159}
   m_Layer: 0
-  m_Name: Collectable2
+  m_Name: Screw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,5 +147,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a5b31b8239d2a43afd80640f502b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
-  icon: {fileID: 21300000, guid: 14ba5415dcd54474caa819779278497d, type: 3}
+--- !u!114 &368635212339106159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4838421622160124787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d8776e26650d44e8f83e7eff39836a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 830b41d7a6ce59b4d8c3537a4d0b52ee, type: 2}
+  rb2d: {fileID: 0}

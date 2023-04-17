@@ -21,7 +21,7 @@ public class Inventory_UI : MonoBehaviour
         if(!inventoryPanel.activeSelf)
         {
             inventoryPanel.SetActive(true);
-            Setup();
+            Refresh();
         }
         else
         {
@@ -29,13 +29,13 @@ public class Inventory_UI : MonoBehaviour
         }
     }
 
-    void Setup()
+    void Refresh()
     {
         if(slots.Count == player.inventory.slots.Count)
         {
             for(int i = 0; i < slots.Count; i++)
             {
-                if(player.inventory.slots[i].type != CollectableType.NONE)
+                if(player.inventory.slots[i].itemName != "")
                 {
                     slots[i].SetItem(player.inventory.slots[i]);
                 }
