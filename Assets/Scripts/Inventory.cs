@@ -9,6 +9,7 @@ public class Inventory
     public class Slot
     {
         public string itemName;
+        public string itemDesc;
         public int count;
         public int maxAllowed;
         public Sprite icon;
@@ -33,6 +34,7 @@ public class Inventory
         {
             this.itemName = item.data.itemName;
             this.icon = item.data.icon;
+            this.itemDesc = item.data.itemDescription;
             count++;
         }
     }
