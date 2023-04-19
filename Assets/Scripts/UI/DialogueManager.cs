@@ -8,23 +8,23 @@ public class DialogueManager : MonoBehaviour
 {
     public Image actorImage;
     public TextMeshProUGUI actorName;
-    public TextMeshProUGUI messageText;
+    public Text messageText;
     public RectTransform backgroundBox;
 
     private Message[] currentMessages;
-    private Actor currentActor;
+    private Actor[] currentActors;
     private int activeMessage = 0;
     public static bool isActive = false;
 
-    public void OpenDialogue(Message[] messages, Actor actor)
+    public void OpenDialogue(Message[] messages, Actor[] actors)
     {
         currentMessages = messages;
-        currentActor = actor;
+        currentActors = actors;
         activeMessage = 0;
         isActive = true;
 
-        Debug.Log(messages.Length);
         DisplayMessage();
+        backgroundBox.LeanScale(Vector3.one, 0.5f).setEaseInOutExpo();
     }
 
     private void DisplayMessage()
@@ -32,9 +32,11 @@ public class DialogueManager : MonoBehaviour
         Message messageToDisplay = currentMessages[activeMessage];
         messageText.text = messageToDisplay.message;
 
-        Actor actorToDisplay = currentActor;
+        Actor actorToDisplay = currentActors[messageToDisplay.actorId];
         actorName.text = actorToDisplay.name;
         actorImage.sprite = actorToDisplay.sprite;
+
+        AnimateTextColor();
     }
 
     public void NextMessage()
@@ -46,9 +48,15 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Conversation ended");
+            backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
             isActive = false;
         }
+    }
+    
+    private void AnimateTextColor()
+    {
+        LeanTween.textAlpha(messageText.rectTransform, 0, 0);
+        LeanTween.textAlpha(messageText.rectTransform, 1, 0.5f);
     }
 
     private void Update()
@@ -57,5 +65,9 @@ public class DialogueManager : MonoBehaviour
         {
             NextMessage();
         }
+    }
+    private void Start()
+    {
+        backgroundBox.transform.localScale = Vector3.zero;
     }
 }

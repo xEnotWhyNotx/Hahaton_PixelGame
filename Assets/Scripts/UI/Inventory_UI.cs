@@ -12,6 +12,7 @@ public class Inventory_UI : MonoBehaviour
     private Slot_UI selectedSlot;
     public TextMeshProUGUI textName;
     public TextMeshProUGUI textDescription;
+    public static bool isActive = false;
 
     void Update()
     {
@@ -26,6 +27,7 @@ public class Inventory_UI : MonoBehaviour
         if(!inventoryPanel.activeSelf)
         {
             inventoryPanel.SetActive(true);
+            isActive = true;
             Refresh();
         }
         else
@@ -37,6 +39,7 @@ public class Inventory_UI : MonoBehaviour
             textName.text = "";
             textDescription.text = "";
             inventoryPanel.SetActive(false);
+            isActive = false;
         }
     }
 

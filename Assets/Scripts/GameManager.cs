@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public ItemManager itemManager;
+    public Manager15 manager15;
 
     private void Awake()
     {
@@ -22,5 +23,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         itemManager = GetComponent<ItemManager>();
+        manager15 = GetComponent<Manager15>();
     }
 }

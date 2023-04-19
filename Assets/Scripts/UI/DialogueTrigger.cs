@@ -5,11 +5,11 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Message[] messages;
-    public Actor actor;
+    public Actor[] actors;
 
     public void StartDialogue()
     {
-        FindObjectOfType<DialogueManager>().OpenDialogue(messages, actor);
+        FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
     }
 }
 

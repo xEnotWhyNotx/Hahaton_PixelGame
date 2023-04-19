@@ -10,6 +10,14 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        if (Inventory_UI.isActive == true)
+        {
+            return;
+        }
+        if (DialogueManager.isActive == true)
+        {
+            return;
+        }
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -18,6 +26,14 @@ public class Movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (Inventory_UI.isActive == true)
+        {
+            return;
+        }
+        if (DialogueManager.isActive == true)
+        {
+            return;
+        }
         this.transform.position += direction * speed * Time.deltaTime;
     }
 
