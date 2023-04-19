@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Threading;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,8 +10,9 @@ public class Player : MonoBehaviour
 
     private Vector2 boxSize = new Vector2(0.1f, 1f);
 
-    public float OxygenLevel = 10;
-    public float MaxOxygenLevel = 10;
+    public float OxygenLevel = 100;
+
+    public float MaxOxygenLevel = 100;
 
     private void Awake()
     {
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            Debug.Log("We r in");
+            //Debug.Log("We r in");
             foreach(RaycastHit2D rc in hits)
             {
                 if (rc.transform.GetComponent<Interactable>())
@@ -46,13 +48,9 @@ public class Player : MonoBehaviour
     }
 
     public void LoverOxygenLevel()
-    {
-         
-        OxygenLevel -= 0.01f;
+    {  
+        OxygenLevel -= 0.0005f;
         if (OxygenLevel < 0)
             OxygenLevel = 0;
-        Task.Delay(50 * 60 * 1000).Wait();
-            
-
     }
 }
