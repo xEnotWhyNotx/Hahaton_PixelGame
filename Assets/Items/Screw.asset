@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Screw
   m_EditorClassIdentifier: 
   itemName: Screwdriver
-  icon: {fileID: 21300000, guid: 14ba5415dcd54474caa819779278497d, type: 3}
+  icon: {fileID: 21300000, guid: 217f17e17dc6d6642982a78eb59ffca5, type: 3}
+  itemDescription: Can unlock some objects.
