@@ -5,28 +5,38 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Openable : Interactable
 {
-    public Sprite open;
-    public Sprite closed;
+    public Sprite activated;
+    public Sprite deactivated;
 
     private SpriteRenderer sr;
-    private bool isOpen;
+    public bool isActivated;
+
+
 
     public override void Interact()
     {
-        if (isOpen)
+        Debug.Log(GetComponent<Collider>());
+        if (isActivated)
         {
-            sr.sprite = closed;
+            sr.sprite = deactivated;
+            FindObjectOfType<DoorController>().CloseDoor();
         }
         else
         {
-            sr.sprite = open;
+            sr.sprite = activated;
+            FindObjectOfType<DoorController>().OpenDoor();
         }
-        isOpen = !isOpen;
+        isActivated = !isActivated;
     }
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        sr.sprite = closed;
+        sr.sprite = deactivated;
+    }
+
+    public bool isActive()
+    {
+        return isActivated;
     }
 }
