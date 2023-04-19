@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,6 +9,9 @@ public class Player : MonoBehaviour
 
     private Vector2 boxSize = new Vector2(0.1f, 1f);
 
+    public float OxygenLevel = 10;
+    public float MaxOxygenLevel = 10;
+
     private void Awake()
     {
         inventory = new Inventory(4);
@@ -15,6 +19,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Task.Run(() => LoverOxygenLevel());
+
         if(Input.GetKeyDown(KeyCode.E))
         {
             CheckInteraction();
@@ -37,5 +43,16 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void LoverOxygenLevel()
+    {
+         
+        OxygenLevel -= 0.01f;
+        if (OxygenLevel < 0)
+            OxygenLevel = 0;
+        Task.Delay(50 * 60 * 1000).Wait();
+            
+
     }
 }
