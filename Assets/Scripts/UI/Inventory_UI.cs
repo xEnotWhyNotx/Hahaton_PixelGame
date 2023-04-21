@@ -76,4 +76,9 @@ public class Inventory_UI : MonoBehaviour
             textDescription.text = player.inventory.slots[index].itemDesc;
         }
     }
+
+    public void ShowOnClick()
+    {
+        ToggleInventory();
+    }
 }
