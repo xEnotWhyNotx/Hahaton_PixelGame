@@ -1,48 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MovingPuzzle : MonoBehaviour
+public class MovingPuzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    private bool move;
-    private Vector2 mousePos;
-    private float startPosX;
-    private float startPosY;
     public GameObject form;
     private bool finish;
-
-    void OnMouseDown()
+    
+    public void OnDrag(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!finish)
         {
-            move = true;
-            mousePos = Input.mousePosition;
-
-            startPosX = mousePos.x - this.transform.localPosition.x;
-            startPosY = mousePos.y - this.transform.localPosition.y;
+            this.gameObject.transform.localPosition += new Vector3(eventData.delta.x * (1920.0f / Screen.width), eventData.delta.y * (1080.0f / Screen.height), 0);
         }
     }
 
-    void OnMouseUp()
+    public void OnEndDrag(PointerEventData eventData)
     {
-        move = false;
 
-
-        if (Mathf.Abs(this.transform.localPosition.x - form.transform.localPosition.x) <= 5f &&
-           Mathf.Abs(this.transform.localPosition.y - form.transform.localPosition.y) <= 5f && finish != true)
+        if (Mathf.Abs(this.transform.localPosition.x - form.transform.localPosition.x) <= 20f &&
+            Mathf.Abs(this.transform.localPosition.y - form.transform.localPosition.y) <= 20f && !finish)
         {
             this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);
             finish = true;
             WinScript.AddElement();
+
         }
     }
 
-    private void Update()
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        if (move == true && finish == false)
-        {
-            mousePos = Input.mousePosition;
-            this.gameObject.transform.localPosition = new Vector2(mousePos.x - startPosX, mousePos.y - startPosY);
-        }
+        
     }
+
+
 }

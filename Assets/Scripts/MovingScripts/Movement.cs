@@ -5,22 +5,51 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float speed;
+    private bool f;
     public Animator animator;
     private Vector3 direction;
+
+    private float horizontal;
+    private float vertical;
+    private bool up = false;
+    private bool down = false;
+    private bool left = false;
+    private bool right = false;
+
+    private void Awake()
+    {
+        if (FindObjectOfType<Mobile>() != null)
+        {
+            f = FindObjectOfType<Mobile>().GetMode();
+        }
+        else
+        {
+            f = false;
+        }
+    }
 
     private void Update()
     {
         if (Inventory_UI.isActive == true)
         {
+            animator.SetBool("isMoving", false);
             return;
         }
         if (DialogueManager.isActive == true)
         {
+            animator.SetBool("isMoving", false);
             return;
         }
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
+        if (f == false)
+        {
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            return;
+        }
+        //Debug.Log("Movement (" + horizontal + ", " + vertical + ")");
         direction = new Vector3(horizontal, vertical);
         AnimateMovement(direction);
     }
@@ -41,7 +70,7 @@ public class Movement : MonoBehaviour
     {
         if (animator != null)
         {
-            if(direction.magnitude > 0)
+            if (direction.magnitude > 0)
             {
                 animator.SetBool("isMoving", true);
                 animator.SetFloat("horizontal", direction.x);
@@ -52,5 +81,37 @@ public class Movement : MonoBehaviour
                 animator.SetBool("isMoving", false);
             }
         }
+        
+    }
+
+    public void Up()
+    {
+        direction = new Vector3(0, 1);
+        this.transform.position += direction * speed * Time.deltaTime;
+        AnimateMovement(direction);
+    }
+    public void Stop()
+    {
+        direction = new Vector3(0, 0);
+        this.transform.position += direction * speed * Time.deltaTime;
+        AnimateMovement(direction);
+    }
+    public void Down()
+    {
+        direction = new Vector3(0, -1);
+        this.transform.position += direction * speed * Time.deltaTime;
+        AnimateMovement(direction);
+    }
+    public void Left()
+    {
+        direction = new Vector3(-1, 0);
+        this.transform.position += direction * speed * Time.deltaTime;
+        AnimateMovement(direction);
+    }
+    public void Right()
+    {
+        direction = new Vector3(1, 0);
+        this.transform.position += direction * speed * Time.deltaTime;
+        AnimateMovement(direction);
     }
 }
