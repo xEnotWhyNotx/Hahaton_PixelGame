@@ -40,6 +40,11 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
+        if (FindObjectOfType<Mobile>() != null)
+        {
+            FindObjectOfType<Mobile>().Delete();
+        }
         SceneManager.LoadScene("Menu");
+        //SceneManager.LoadScene("DragNDropScene", LoadSceneMode.Additive);
     }
 }

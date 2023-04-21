@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     public Inventory inventory;
 
+
     public float OxygenLevel = 100;
 
     public float MaxOxygenLevel = 100;
@@ -22,7 +23,17 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
         Task.Run(() => LoverOxygenLevel());
+
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            foreach (Inventory.Slot slot in inventory.slots)
+            {
+                Debug.Log(slot.itemName);
+            }
+            
+        }
 
         if(Input.GetKeyDown(KeyCode.E))
         {
@@ -53,5 +64,10 @@ public class Player : MonoBehaviour
         OxygenLevel -= 0.0005f;
         if (OxygenLevel < 0)
             OxygenLevel = 0;
+    }
+
+    public void CheckOnButton()
+    {
+        CheckInteraction();
     }
 }

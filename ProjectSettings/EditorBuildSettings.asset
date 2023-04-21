@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: df94e99859ec75b41a9c179c9f126d57
   - enabled: 1
-    path: Assets/Scenes/Scene_Novichok.unity
-    guid: 56c65de70fc201e4fa1eb023447ceb11
+    path: Assets/Scenes/FinalMap.unity
+    guid: bdbc9edafe328d1468da8a52ef24d2b6
+  - enabled: 1
+    path: Assets/Scenes/DragNDropScene.unity
+    guid: 7e5f346aad4cb0349ba0159532eabb73
   m_configObjects: {}

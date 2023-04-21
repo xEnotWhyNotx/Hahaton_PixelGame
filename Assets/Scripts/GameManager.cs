@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    
+
     public ItemManager itemManager;
     public Manager15 manager15;
 
@@ -25,4 +27,6 @@ public class GameManager : MonoBehaviour
         itemManager = GetComponent<ItemManager>();
         manager15 = GetComponent<Manager15>();
     }
+
+    
 }

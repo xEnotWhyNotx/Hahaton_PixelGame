@@ -82,6 +82,7 @@ public class Manager15 : MonoBehaviour {
         return false;
       }
     }
+    // Момент победы
     return true;
   }
 
