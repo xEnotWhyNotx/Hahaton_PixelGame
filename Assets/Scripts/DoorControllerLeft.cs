@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorController : MonoBehaviour
+public class DoorControllerLeft : MonoBehaviour
 {
     public Sprite open;
     public Sprite closed;
@@ -33,6 +33,4 @@ public class DoorController : MonoBehaviour
         sr.sprite = closed;
         collider1 = GetComponent<BoxCollider2D>();
     }
-
-
 }

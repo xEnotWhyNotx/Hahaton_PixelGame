@@ -24,7 +24,6 @@ public class WinScript : MonoBehaviour
         }
     }
 
-
     public static void AddElement()
     {
         myElement++;
