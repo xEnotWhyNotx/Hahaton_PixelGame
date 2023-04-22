@@ -9,11 +9,17 @@ public class Movement : MonoBehaviour
     public Animator animator;
     private Vector3 direction;
 
+    private GameObject player;
+    private AudioSource audioSource;
+
     private float horizontal;
     private float vertical;
 
     private void Awake()
     {
+        player = GameObject.FindWithTag("Player"); 
+        audioSource = player.GetComponent<AudioSource>();
+
         if (FindObjectOfType<Mobile>() != null)
         {
             f = FindObjectOfType<Mobile>().GetMode();
@@ -69,6 +75,8 @@ public class Movement : MonoBehaviour
             if (direction.magnitude > 0)
             {
                 animator.SetBool("isMoving", true);
+                if (audioSource.isPlaying) return;
+                audioSource.Play();
                 animator.SetFloat("horizontal", direction.x);
                 animator.SetFloat("vertical", direction.y);
             }

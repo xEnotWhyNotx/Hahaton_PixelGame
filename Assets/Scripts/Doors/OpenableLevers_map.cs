@@ -11,6 +11,8 @@ public class OpenableLevers_map : Interactable
     private SpriteRenderer sr;
     public bool isActivated;
 
+    private AudioSource audioSource;
+
 
 
     public override void Interact()
@@ -20,17 +22,20 @@ public class OpenableLevers_map : Interactable
         {
             sr.sprite = deactivated;
             FindObjectOfType<DoorControllerLevers>().CloseDoor();
+            audioSource.Play();
         }
         else
         {
             sr.sprite = activated;
             FindObjectOfType<DoorControllerLevers>().OpenDoor();
+            audioSource.Play();
         }
         isActivated = !isActivated;
     }
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = deactivated;
     }

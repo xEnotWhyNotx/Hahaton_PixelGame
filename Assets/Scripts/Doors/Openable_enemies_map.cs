@@ -11,6 +11,8 @@ public class Openable_enemies_map : Interactable
     private SpriteRenderer sr;
     public bool isActivated;
 
+    private AudioSource audioSource;
+
 
 
     public override void Interact()
@@ -20,17 +22,20 @@ public class Openable_enemies_map : Interactable
         {
             sr.sprite = deactivated;
             FindObjectOfType<DoorControllerEnemies_map>().CloseDoor();
+            audioSource.Play();
         }
         else
         {
             sr.sprite = activated;
             FindObjectOfType<DoorControllerEnemies_map>().OpenDoor();
+            audioSource.Play();
         }
         isActivated = !isActivated;
     }
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = deactivated;
     }

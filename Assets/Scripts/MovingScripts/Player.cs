@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
 
 
     public float OxygenLevel = 100;
-
     public float MaxOxygenLevel = 100;
 
     private Vector2 boxSize = new Vector2(0.1f, 1f);
