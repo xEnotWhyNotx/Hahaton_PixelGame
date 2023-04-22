@@ -112462,7 +112462,7 @@ Tilemap:
       - {fileID: 1232127833, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
       - {fileID: 309505831, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
       - {fileID: -366612627, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
-      m_AnimationSpeed: 25.000002
+      m_AnimationSpeed: 25
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 54, y: 34, z: 0}
@@ -112852,7 +112852,7 @@ Tilemap:
       - {fileID: 1232127833, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
       - {fileID: 309505831, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
       - {fileID: -366612627, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
-      m_AnimationSpeed: 25
+      m_AnimationSpeed: 25.000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 65, y: 38, z: 0}
@@ -113572,7 +113572,7 @@ Tilemap:
       - {fileID: 1232127833, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
       - {fileID: 309505831, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
       - {fileID: -366612627, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
-      m_AnimationSpeed: 25.000002
+      m_AnimationSpeed: 25
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 52, y: 43, z: 0}
@@ -113842,7 +113842,7 @@ Tilemap:
       - {fileID: 1232127833, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
       - {fileID: 309505831, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
       - {fileID: -366612627, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
-      m_AnimationSpeed: 25.000002
+      m_AnimationSpeed: 25
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 49, y: 45, z: 0}
@@ -114262,7 +114262,7 @@ Tilemap:
       - {fileID: 1232127833, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
       - {fileID: 309505831, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
       - {fileID: -366612627, guid: dddbb93610553494cad4aebe1e4c6a32, type: 3}
-      m_AnimationSpeed: 25.000002
+      m_AnimationSpeed: 25
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 53, y: 46, z: 0}
