@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PatrolEnemy2 : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class PatrolEnemy2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") == true)
         {
-            Debug.Log("You died");
+            SceneManager.LoadScene("Defeat");
         }
     }
 

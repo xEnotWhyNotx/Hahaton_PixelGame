@@ -431,6 +431,7 @@ namespace Pathfinding {
 		/// If no rigidbodies are used then all movement happens here.
 		/// </summary>
 		protected virtual void Update () {
+
 			dist = Vector2.Distance(target1.position, target2.position);
 			if (dist > mindist)
 			{

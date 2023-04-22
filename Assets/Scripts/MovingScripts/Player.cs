@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using System.Threading;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
@@ -25,8 +26,11 @@ public class Player : MonoBehaviour
     {
 
         Task.Run(() => LoverOxygenLevel());
-
-        if(Input.GetKeyDown(KeyCode.Y))
+        if (OxygenLevel == 0)
+        {
+            SceneManager.LoadScene("Defeat");
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             foreach (Inventory.Slot slot in inventory.slots)
             {
@@ -64,6 +68,7 @@ public class Player : MonoBehaviour
         OxygenLevel -= 0.0005f;
         if (OxygenLevel < 0)
             OxygenLevel = 0;
+        
     }
 
     public void CheckOnButton()
