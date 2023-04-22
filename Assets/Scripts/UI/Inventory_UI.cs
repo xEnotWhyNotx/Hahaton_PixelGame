@@ -88,6 +88,12 @@ public class Inventory_UI : MonoBehaviour
         }
     }
 
+    public void Remove(Inventory.Slot slot)
+    {
+        player.inventory.Remove(slot);
+        Refresh();
+    }
+
     public void SelectSlot(int index)
     {
         if (slots.Count == 4)

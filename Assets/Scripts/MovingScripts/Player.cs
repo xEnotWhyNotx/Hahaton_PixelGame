@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-       
         Task.Run(() => LoverOxygenLevel());
         if (OxygenLevel == 0)
         {
