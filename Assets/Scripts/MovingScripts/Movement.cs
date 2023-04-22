@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
 
     private float horizontal;
     private float vertical;
+    
 
     private void Awake()
     {
