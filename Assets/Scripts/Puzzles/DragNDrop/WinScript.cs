@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinScript : MonoBehaviour
 {
@@ -17,10 +18,12 @@ public class WinScript : MonoBehaviour
 
     void Update()
     {
-        if (fullElement == myElement)
+        if (fullElement == myElement) // Условие при победе
         {
+            // Вместо изменения панелей переход на другую сцену
             myPanel.SetActive(false);
             winPanel.SetActive(true);
+            SceneManager.UnloadSceneAsync("DragNDropScene");
         }
     }
 
