@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Win.unity
     guid: 93164233d3322d54fb99a3c230665dce
+  - enabled: 1
+    path: Assets/Scenes/SpaceX.unity
+    guid: 47cedc7b571a01f47b3c1a5425226cdd
   m_configObjects: {}
