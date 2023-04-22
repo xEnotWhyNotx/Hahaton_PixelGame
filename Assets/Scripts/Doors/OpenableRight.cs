@@ -11,6 +11,8 @@ public class OpenableRight : Interactable
     private SpriteRenderer sr;
     public bool isActivated;
 
+    private AudioSource audioSource;
+
 
 
     public override void Interact()
@@ -20,17 +22,20 @@ public class OpenableRight : Interactable
         {
             sr.sprite = deactivated;
             FindObjectOfType<DoorControllerRight>().CloseDoor();
+            audioSource.Play();
         }
         else
         {
             sr.sprite = activated;
             FindObjectOfType<DoorControllerRight>().OpenDoor();
+            audioSource.Play();
         }
         isActivated = !isActivated;
     }
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = deactivated;
     }
