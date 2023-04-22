@@ -36,6 +36,11 @@ public class Movement : MonoBehaviour
             animator.SetBool("isMoving", false);
             return;
         }
+        if (FindObjectOfType<ActivePuzzle>().GetPuzzle() == true)
+        {
+            animator.SetBool("isMoving", false);
+            return;
+        }
         if (f == false)
         {
             horizontal = Input.GetAxisRaw("Horizontal");
@@ -82,30 +87,55 @@ public class Movement : MonoBehaviour
 
     public void Up()
     {
+        if (Inventory_UI.isActive == true)
+        {
+            animator.SetBool("isMoving", false);
+            return;
+        }
         direction = new Vector3(0, 1);
         this.transform.position += direction * speed * Time.deltaTime;
         AnimateMovement(direction);
     }
     public void Stop()
     {
+        if (Inventory_UI.isActive == true)
+        {
+            animator.SetBool("isMoving", false);
+            return;
+        }
         direction = new Vector3(0, 0);
         this.transform.position += direction * speed * Time.deltaTime;
         AnimateMovement(direction);
     }
     public void Down()
     {
+        if (Inventory_UI.isActive == true)
+        {
+            animator.SetBool("isMoving", false);
+            return;
+        }
         direction = new Vector3(0, -1);
         this.transform.position += direction * speed * Time.deltaTime;
         AnimateMovement(direction);
     }
     public void Left()
     {
+        if (Inventory_UI.isActive == true)
+        {
+            animator.SetBool("isMoving", false);
+            return;
+        }
         direction = new Vector3(-1, 0);
         this.transform.position += direction * speed * Time.deltaTime;
         AnimateMovement(direction);
     }
     public void Right()
     {
+        if (Inventory_UI.isActive == true)
+        {
+            animator.SetBool("isMoving", false);
+            return;
+        }
         direction = new Vector3(1, 0);
         this.transform.position += direction * speed * Time.deltaTime;
         AnimateMovement(direction);

@@ -7,6 +7,14 @@ using TMPro;
 public class Inventory_UI : MonoBehaviour
 {
     public GameObject inventoryPanel;
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject button3;
+    public GameObject button4;
+    public GameObject buttonint;
+    public GameObject Oxbar;
+
+    private bool f;
     public Player player;
     public List<Slot_UI> slots = new List<Slot_UI>();
     private Slot_UI selectedSlot;
@@ -16,7 +24,7 @@ public class Inventory_UI : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.Tab) && FindObjectOfType<ActivePuzzle>().GetPuzzle() != true)
         {
             ToggleInventory();
         }
@@ -27,6 +35,15 @@ public class Inventory_UI : MonoBehaviour
         if(!inventoryPanel.activeSelf)
         {
             inventoryPanel.SetActive(true);
+            if (f == true)
+            {
+                button1.SetActive(false);
+                button2.SetActive(false);
+                button3.SetActive(false);
+                button4.SetActive(false);
+                buttonint.SetActive(false);
+            }
+            Oxbar.SetActive(false);
             isActive = true;
             Refresh();
         }
@@ -40,6 +57,16 @@ public class Inventory_UI : MonoBehaviour
             textDescription.text = "";
             inventoryPanel.SetActive(false);
             isActive = false;
+            if (f == true)
+            {
+                button1.SetActive(true);
+                button2.SetActive(true);
+                button3.SetActive(true);
+                button4.SetActive(true);
+                buttonint.SetActive(true);
+            }
+            
+            Oxbar.SetActive(true);
         }
     }
 
@@ -80,5 +107,16 @@ public class Inventory_UI : MonoBehaviour
     public void ShowOnClick()
     {
         ToggleInventory();
+    }
+    public void Awake()
+    {
+        if (FindObjectOfType<Mobile>() != null)
+        {
+            f = FindObjectOfType<Mobile>().GetMode();
+        }
+        else
+        {
+            f = false;
+        }
     }
 }
