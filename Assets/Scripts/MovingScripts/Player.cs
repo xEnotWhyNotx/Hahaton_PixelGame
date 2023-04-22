@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        Task.Run(() => LoverOxygenLevel());
+        LoverOxygenLevel();
         if (OxygenLevel == 0)
         {
             SceneManager.LoadScene("Defeat");
