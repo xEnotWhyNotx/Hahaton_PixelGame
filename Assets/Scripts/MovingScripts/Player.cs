@@ -9,8 +9,14 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public Inventory inventory;
-
-
+    public ActivePuzzle puz;
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject button3;
+    public GameObject button4;
+    public GameObject buttonint;
+    public GameObject buttoninv;
+    public GameObject Oxbar;
     public float OxygenLevel = 100;
     public float MaxOxygenLevel = 100;
 
@@ -23,7 +29,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
         LoverOxygenLevel();
         if (OxygenLevel == 0)
         {
@@ -40,12 +45,16 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.E))
         {
-            CheckInteraction();
+            if (puz.GetPuzzle() == false)
+            {
+                CheckInteraction();
+            }
         }
     }
 
     private void CheckInteraction()
     {
+
         RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, boxSize, 0, Vector2.zero);
 
         if (hits.Length > 0)
@@ -72,6 +81,34 @@ public class Player : MonoBehaviour
 
     public void CheckOnButton()
     {
-        CheckInteraction();
+        if (puz.GetPuzzle() != true)
+        {
+            CheckInteraction();
+        }
+        
+    }
+
+    public void SetUI()
+    {
+        if (puz.GetPuzzle() == true)
+        {
+            button1.SetActive(false);
+            button2.SetActive(false);
+            button3.SetActive(false);
+            button4.SetActive(false);
+            buttonint.SetActive(false);
+            buttoninv.SetActive(false);
+            Oxbar.SetActive(false);
+        }
+        else
+        {
+            button1.SetActive(true);
+            button2.SetActive(true);
+            button3.SetActive(true);
+            button4.SetActive(true);
+            buttonint.SetActive(true);
+            buttoninv.SetActive(true);
+            Oxbar.SetActive(true);
+        }
     }
 }

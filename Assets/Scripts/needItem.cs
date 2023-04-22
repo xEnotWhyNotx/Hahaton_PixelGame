@@ -8,34 +8,63 @@ using UnityEngine.SceneManagement;
 public class needItem : Interactable
 {
     public Player player;
-    public string neededItem; 
-
+    public string neededItem;
+    public ActivePuzzle puz;
+    private bool f;
+    private bool completed = false;
     private SpriteRenderer sr;
     private bool isActivated;
 
 
     public override void Interact()
     {
-        foreach (Inventory.Slot slot in player.inventory.slots)
+        if (completed == false)
         {
-            if(slot.itemName == neededItem)
+            foreach (Inventory.Slot slot in player.inventory.slots)
             {
-                isActivated = true;
-                break;
+
+                if (slot.itemName == neededItem)
+                {
+                    isActivated = true;
+                    break;
+                }
+                else
+                {
+                    Debug.Log("We don't have needed item");
+                    isActivated = false;
+                }
             }
-            else
+            if (isActivated == true)
             {
-                Debug.Log("We don't have needed item");
                 isActivated = false;
+                puz.SetPuzzle(true);
+                FindObjectOfType<Player>().SetUI();
+                SceneManager.LoadScene("DragNDropScene", LoadSceneMode.Additive);
             }
         }
-        if (isActivated == true)
+        else
         {
-            SceneManager.LoadScene("DragNDropScene",LoadSceneMode.Additive);
+            Debug.Log("Puzzle completed");
         }
     }
     public bool isActive()
     {
         return isActivated;
+    }
+
+    public void Awake()
+    {
+        if (FindObjectOfType<Mobile>() != null)
+        {
+            f = FindObjectOfType<Mobile>().GetMode();
+        }
+        else
+        {
+            f = false;
+        }
+    }
+    public void setComplete()
+    {
+        completed = true;
     }
 }

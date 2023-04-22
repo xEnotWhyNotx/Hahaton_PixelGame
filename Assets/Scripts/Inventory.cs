@@ -37,6 +37,23 @@ public class Inventory
             this.itemDesc = item.data.itemDescription;
             count++;
         }
+
+        public void RemoveItem()
+        {
+            if (count > 0)
+            {
+                count--;
+
+                if (count  == 0)
+                {
+                    this.itemName = "";
+                    this.icon = null;
+                    this.itemDesc = "";
+                }
+            }
+
+        }
+        
     }
 
     public List<Slot> slots = new List<Slot>();
@@ -69,5 +86,10 @@ public class Inventory
                 return;
             }
         }
+    }
+
+    public void Remove(Slot slot)
+    {
+        slot.RemoveItem();
     }
 }

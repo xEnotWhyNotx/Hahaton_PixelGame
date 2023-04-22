@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class WinScript : MonoBehaviour
 {
     private int fullElement;
+    public Winnable win;
     public static int myElement;
     public GameObject myPuzzl;
     public GameObject myPanel;
-    public GameObject winPanel;
+    
 
     void Start()
     {
@@ -22,7 +23,10 @@ public class WinScript : MonoBehaviour
         {
             // Вместо изменения панелей переход на другую сцену
             myPanel.SetActive(false);
-            winPanel.SetActive(true);
+            win.SetMode();
+            FindObjectOfType<ActivePuzzle>().SetPuzzle(false);
+            FindObjectOfType<Player>().SetUI();
+            FindObjectOfType<needItem>().setComplete();
             SceneManager.UnloadSceneAsync("DragNDropScene");
         }
     }
@@ -30,5 +34,12 @@ public class WinScript : MonoBehaviour
     public static void AddElement()
     {
         myElement++;
+    }
+
+    public void Exit()
+    {
+        FindObjectOfType<ActivePuzzle>().SetPuzzle(false);
+        FindObjectOfType<Player>().SetUI();
+        SceneManager.UnloadSceneAsync("DragNDropScene");
     }
 }
