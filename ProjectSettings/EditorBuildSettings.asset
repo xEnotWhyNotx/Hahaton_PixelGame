@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpaceX.unity
     guid: 47cedc7b571a01f47b3c1a5425226cdd
+  - enabled: 1
+    path: Assets/Scenes/Intro_cutscene.unity
+    guid: 64a7f58c008424a46856eb67cde84c9b
   m_configObjects: {}
