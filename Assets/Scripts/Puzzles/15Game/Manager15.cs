@@ -65,11 +65,17 @@ public class Manager15 : MonoBehaviour {
             k = true;
     }
 
+    Vector2 CurMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
     if (Input.GetMouseButtonDown(0)) {
-      RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+      RaycastHit2D hit = Physics2D.Raycast(CurMousePos, Vector2.zero);
+      Debug.Log(hit);
+      Debug.Log(hit.transform);
       if (hit) {
         for (int i = 0; i < pieces.Count; i++) {
-          if (pieces[i] == hit.transform) {
+                    Debug.Log(hit.transform);
+                    Debug.Log(pieces[i]);
+                    if (pieces[i] == hit.transform) {
             if (SwapIfValid(i, -size, size)) { break; }
             if (SwapIfValid(i, +size, size)) { break; }
             if (SwapIfValid(i, -1, 0)) { break; }
