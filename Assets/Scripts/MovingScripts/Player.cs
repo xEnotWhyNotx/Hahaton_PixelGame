@@ -21,12 +21,48 @@ public class Player : MonoBehaviour
 
     public float OxygenLevel = 100;
     public float MaxOxygenLevel = 100;
+    private bool inTriggerZone = false;
+    private bool canRefill = false;
+    public float DecreaseLevel;
+    public float RefillOxygen;
+    public KeyCode transitionKey = KeyCode.E;
 
     private Vector2 boxSize = new Vector2(0.1f, 1f);
 
     private void Awake()
     {
         inventory = new Inventory(4);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("TriggerZone1"))
+        {
+            inTriggerZone = true;
+            if (inTriggerZone) {
+                {
+                    OxygenLevel -= DecreaseLevel;
+                }
+            }
+        }
+        if (other.CompareTag("RefillStation"))
+        {
+            Debug.Log("Can refill");
+            canRefill = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("TriggerZone1"))
+        {
+            inTriggerZone = false;
+        }
+        if (other.CompareTag("RefillStation"))
+        {
+            Debug.Log("Can't refill");
+            canRefill = false;
+        }
     }
 
     void Update()
@@ -43,6 +79,21 @@ public class Player : MonoBehaviour
                 Debug.Log(slot.itemName);
             }
             
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (canRefill)
+            {
+                Debug.Log("Can refill");
+                if (OxygenLevel >= 99)
+                {
+                    OxygenLevel += 100 - OxygenLevel - 1;
+                }
+                else
+                {
+                    OxygenLevel += RefillOxygen;
+                }
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.E))
