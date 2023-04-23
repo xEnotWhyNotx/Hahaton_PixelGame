@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-[RequireComponent(typeof(SpriteRenderer))]
-public class needItem : Interactable
+public class Cafedreau : Interactable
 {
     public Player player;
-    public string neededItem;
+    public Camera cam1;
     public ActivePuzzle puz;
     private bool f;
     private bool completed = false;
-    private SpriteRenderer sr;
     private bool isActivated;
-    
+
 
     public override void Interact()
     {
@@ -22,18 +19,14 @@ public class needItem : Interactable
         {
             puz.SetPuzzle(true);
             FindObjectOfType<Player>().SetUI();
-            SceneManager.LoadScene("DragNDropScene", LoadSceneMode.Additive);
+            cam1.enabled = false;
+            SceneManager.LoadScene("15Game", LoadSceneMode.Additive);
         }
         else
         {
             Debug.Log("Puzzle completed");
         }
     }
-    public bool isActive()
-    {
-        return isActivated;
-    }
-
     public void Awake()
     {
         if (FindObjectOfType<Mobile>() != null)
@@ -48,6 +41,11 @@ public class needItem : Interactable
     public void setComplete()
     {
         completed = true;
-        FindObjectOfType<StarDoor>().OpenDoor();
+        cam1.enabled = true;
+        FindObjectOfType<PyatnashkiDoor>().OpenDoor();
+    }
+    public bool isActive()
+    {
+        return isActivated;
     }
 }

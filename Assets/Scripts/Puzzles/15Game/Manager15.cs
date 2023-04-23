@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager15 : MonoBehaviour {
   [SerializeField] private Transform gameTransform;
   [SerializeField] private Transform piecePrefab;
+    public Winnable win;
+    private List<Transform> pieces;
+    private int emptyLocation;
+    private int size;
+    private bool shuffling = false;
+    private bool k = false;
+  
 
-  private List<Transform> pieces;
-  private int emptyLocation;
-  private int size;
-  private bool shuffling = false;
 
   private void CreateGamePieces(float gapThickness) {
     float width = 1 / (float)size;
@@ -47,8 +51,18 @@ public class Manager15 : MonoBehaviour {
 
   void Update() {
     if (!shuffling && CheckCompletion()) {
+            if (k == true)
+            {
+                win.SetMode();
+                FindObjectOfType<ActivePuzzle>().SetPuzzle(false);
+                FindObjectOfType<Player>().SetUI();
+                FindObjectOfType<Cafedreau>().setComplete();
+                SceneManager.UnloadSceneAsync("15Game");
+            }
+            
       shuffling = true;
       StartCoroutine(WaitShuffle(0.5f));
+            k = true;
     }
 
     if (Input.GetMouseButtonDown(0)) {
@@ -82,8 +96,10 @@ public class Manager15 : MonoBehaviour {
         return false;
       }
     }
-    // Момент победы
-    return true;
+        
+        
+        // Момент победы
+        return true;
   }
 
   private IEnumerator WaitShuffle(float duration) {

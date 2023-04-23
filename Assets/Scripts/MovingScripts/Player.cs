@@ -72,27 +72,31 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Defeat");
         }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            foreach (Inventory.Slot slot in inventory.slots)
-            {
-                Debug.Log(slot.itemName);
-            }
-            
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (canRefill)
             {
-                Debug.Log("Can refill");
-                if (OxygenLevel >= 99)
+                foreach (Inventory.Slot slot in inventory.slots)
                 {
-                    OxygenLevel += 100 - OxygenLevel - 1;
+                    if (slot.itemName == "Gas Balon")
+                    {
+                        FindObjectOfType<Inventory_UI>().Remove(slot);
+                        if (OxygenLevel + RefillOxygen >= 100)
+                        {
+                            OxygenLevel = 100;
+                        }
+                        else
+                        {
+                            OxygenLevel += RefillOxygen;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        Debug.Log("Don't have");
+                    }
                 }
-                else
-                {
-                    OxygenLevel += RefillOxygen;
-                }
+                
             }
         }
 
@@ -125,7 +129,7 @@ public class Player : MonoBehaviour
 
     public void LoverOxygenLevel()
     {  
-        OxygenLevel -= 0.0005f;
+        OxygenLevel -= 0.001f;
         if (OxygenLevel < 0)
             OxygenLevel = 0;
         

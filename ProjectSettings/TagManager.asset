@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Predmet
   - TriggerZone1
+  - RefillStation
   layers:
   - Default
   - TransparentFX
