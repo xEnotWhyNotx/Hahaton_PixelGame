@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Wires
   icon: {fileID: 21300000, guid: 32c2f5f8d5d82284b9176db7b014954c, type: 3}
-  itemDescription: Can unlock some objects.
+  itemDescription: Part of the power supply has been damaged. This is a reliable
+    new connection between the electricity source and the consumer.

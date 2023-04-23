@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Connector
   icon: {fileID: 21300000, guid: ec448adfe2cebca499de52d43e255038, type: 3}
-  itemDescription: Can unlock some objects.
+  itemDescription: Almost all parts of the antenna must be connected with a suitable
+    cable.

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36b42c9259056b44a06a3668f334c00, type: 3}
   m_Name: Antenna
   m_EditorClassIdentifier: 
-  itemName: ' Antenna'
+  itemName: Antenna
   icon: {fileID: 21300000, guid: 4767cb25e07300b47a91b59dd6329af1, type: 3}
-  itemDescription: Can unlock some objects.
+  itemDescription: A log-periodic antenna that is only tuned to catch incoming signals
+    at highly distant frequencies.

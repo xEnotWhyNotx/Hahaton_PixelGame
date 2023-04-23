@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CaseOfWinning : Interactable
 {
     public Player player;
+
     private int Windex;
     private int Aindex;
     private int Caindex;
     private int Coindex;
+
     public Sprite active;
     public SpriteRenderer sr1;
     public SpriteRenderer sr2;
     public SpriteRenderer sr3;
     public SpriteRenderer sr4;
-    private bool completed = false;
+
+    public GameObject ActivatedCollider;
+
+    public bool completed = false;
     private bool screw = false;
 
     public override void Interact()
@@ -41,23 +47,47 @@ public class CaseOfWinning : Interactable
 
                         FindObjectOfType<Inventory_UI>().Remove(slot);
                         sr1.sprite = active;
+                        if (sr1.sprite == active && sr2.sprite == active && sr3.sprite == active && sr4.sprite == active)
+                        {
+                            completed = true;
+                            ActivatedCollider.SetActive(true);
+                        }
+                        break;
                     }
                     if (slot.itemName == "Connector")
                     {
                         FindObjectOfType<Inventory_UI>().Remove(slot);
                         sr2.sprite = active;
+                        if (sr1.sprite == active && sr2.sprite == active && sr3.sprite == active && sr4.sprite == active)
+                        {
+                            completed = true;
+                            ActivatedCollider.SetActive(true);
+                        }
+                        break;
 
                     }
                     if (slot.itemName == "Antenna")
                     {
                         FindObjectOfType<Inventory_UI>().Remove(slot);
                         sr3.sprite = active;
+                        if (sr1.sprite == active && sr2.sprite == active && sr3.sprite == active && sr4.sprite == active)
+                        {
+                            completed = true;
+                            ActivatedCollider.SetActive(true);
+                        }
+                        break;
 
                     }
                     if (slot.itemName == "Catcher")
                     {
                         FindObjectOfType<Inventory_UI>().Remove(slot);
                         sr4.sprite = active;
+                        if (sr1.sprite == active && sr2.sprite == active &&  sr3.sprite == active && sr4.sprite == active)
+                        {
+                            completed = true;
+                            ActivatedCollider.SetActive(true);
+                        }
+                        break;
                     }
                     else
                     {
@@ -68,7 +98,12 @@ public class CaseOfWinning : Interactable
         }
         else
         {
-            Debug.Log("You win");
+            SceneManager.LoadScene("Win");
         }
+    }
+
+    public bool is_completed()
+    {
+        return completed;
     }
 }

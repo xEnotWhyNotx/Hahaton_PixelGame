@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 {
     public Inventory inventory;
     public ActivePuzzle puz;
+    public DialogueManager dial;
     public GameObject button1;
     public GameObject button2;
     public GameObject button3;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     public GameObject buttonint;
     public GameObject buttoninv;
     public GameObject Oxbar;
+
     public float OxygenLevel = 100;
     public float MaxOxygenLevel = 100;
 
@@ -59,7 +61,6 @@ public class Player : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            Debug.Log("We r in");
             foreach(RaycastHit2D rc in hits)
             {
                 if (rc.transform.GetComponent<Interactable>())
@@ -90,7 +91,7 @@ public class Player : MonoBehaviour
 
     public void SetUI()
     {
-        if (puz.GetPuzzle() == true)
+        if (puz.GetPuzzle() == true || dial.GetDialogue() == true)
         {
             button1.SetActive(false);
             button2.SetActive(false);
