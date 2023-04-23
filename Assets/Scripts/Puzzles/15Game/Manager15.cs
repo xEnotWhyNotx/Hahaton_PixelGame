@@ -12,7 +12,6 @@ public class Manager15 : MonoBehaviour {
     private int size;
     private bool shuffling = false;
     private bool k = false;
-  
 
 
   private void CreateGamePieces(float gapThickness) {
@@ -132,5 +131,11 @@ public class Manager15 : MonoBehaviour {
       }
     }
   }
+  public void Exit()
+  {
+      FindObjectOfType<ActivePuzzle>().SetPuzzle(false);
+      FindObjectOfType<Camera>().enabled = true;
+      FindObjectOfType<Player>().SetUI();
+      SceneManager.UnloadSceneAsync("15Game");
+  }
 }
-

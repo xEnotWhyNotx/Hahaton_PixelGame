@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public GameObject buttonint;
     public GameObject buttoninv;
     public GameObject Oxbar;
+    public GameObject sound2;
 
     public float OxygenLevel = 100;
     public float MaxOxygenLevel = 100;
@@ -26,12 +27,15 @@ public class Player : MonoBehaviour
     public float DecreaseLevel;
     public float RefillOxygen;
     public KeyCode transitionKey = KeyCode.E;
+    private AudioSource audioSource;
+    private AudioSource audioSource2;
 
     private Vector2 boxSize = new Vector2(0.1f, 1f);
 
     private void Awake()
     {
         inventory = new Inventory(4);
+        audioSource2 = sound2.GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -72,7 +76,7 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Defeat");
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || buttonint)
         {
             if (canRefill)
             {
@@ -81,6 +85,7 @@ public class Player : MonoBehaviour
                     if (slot.itemName == "Gas Balon")
                     {
                         FindObjectOfType<Inventory_UI>().Remove(slot);
+                        audioSource2.Play();
                         if (OxygenLevel + RefillOxygen >= 100)
                         {
                             OxygenLevel = 100;

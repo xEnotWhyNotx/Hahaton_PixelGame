@@ -16,14 +16,14 @@ public class StarDoor : MonoBehaviour
     public void OpenDoor()
     {
         isOpen = true;
-        collider1.enabled = !collider1.enabled;
+        collider1.enabled = false;
         sr.sprite = open;
     }
 
     public void CloseDoor()
     {
         isOpen = false;
-        collider1.enabled = !collider1.enabled;
+        collider1.enabled = true;
         sr.sprite = closed;
     }
 
