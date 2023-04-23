@@ -20,27 +20,9 @@ public class needItem : Interactable
     {
         if (completed == false)
         {
-            foreach (Inventory.Slot slot in player.inventory.slots)
-            {
-
-                if (slot.itemName == neededItem)
-                {
-                    isActivated = true;
-                    break;
-                }
-                else
-                {
-                    Debug.Log("We don't have needed item");
-                    isActivated = false;
-                }
-            }
-            if (isActivated == true)
-            {
-                isActivated = false;
-                puz.SetPuzzle(true);
-                FindObjectOfType<Player>().SetUI();
-                SceneManager.LoadScene("DragNDropScene", LoadSceneMode.Additive);
-            }
+            puz.SetPuzzle(true);
+            FindObjectOfType<Player>().SetUI();
+            SceneManager.LoadScene("DragNDropScene", LoadSceneMode.Additive);
         }
         else
         {

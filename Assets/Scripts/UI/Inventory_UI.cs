@@ -24,7 +24,7 @@ public class Inventory_UI : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab) && FindObjectOfType<ActivePuzzle>().GetPuzzle() != true)
+        if(Input.GetKeyDown(KeyCode.Tab) && FindObjectOfType<ActivePuzzle>().GetPuzzle() != true && FindObjectOfType<DialogueManager>().GetState() == false)
         {
             ToggleInventory();
         }

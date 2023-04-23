@@ -76,4 +76,8 @@ public class DialogueManager : MonoBehaviour
     {
         backgroundBox.transform.localScale = Vector3.zero;
     }
+    public bool GetState()
+    {
+        return isActive;
+    }
 }

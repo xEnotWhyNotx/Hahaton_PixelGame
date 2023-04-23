@@ -5,14 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class Inventory
 {
+    public static int activeItems = 0;
     [System.Serializable]
     public class Slot
     {
+        
         public string itemName;
         public string itemDesc;
         public int count;
         public int maxAllowed;
         public Sprite icon;
+        
 
         public Slot()
         {
@@ -36,6 +39,9 @@ public class Inventory
             this.icon = item.data.icon;
             this.itemDesc = item.data.itemDescription;
             count++;
+            
+            
+
         }
 
         public void RemoveItem()
@@ -51,7 +57,7 @@ public class Inventory
                     this.itemDesc = "";
                 }
             }
-
+            
         }
         
     }
@@ -69,7 +75,9 @@ public class Inventory
 
     public void Add(Item item)
     {
-        foreach(Slot slot in slots)
+        activeItems++;
+        Debug.Log(activeItems);
+        foreach (Slot slot in slots)
         {
             if(slot.itemName == item.data.itemName && slot.CanAddItem())
             {
@@ -90,6 +98,12 @@ public class Inventory
 
     public void Remove(Slot slot)
     {
+        if (activeItems > 4)
+        {
+            activeItems = 4;
+        }
+        activeItems--;
         slot.RemoveItem();
     }
+
 }

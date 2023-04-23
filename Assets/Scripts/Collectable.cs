@@ -16,7 +16,12 @@ public class Collectable : MonoBehaviour
             if(item != null)
             {
                 player.inventory.Add(item);
-                Destroy(this.gameObject);
+                //Debug.Log(Inventory.Slot.activeItems);
+                if (Inventory.activeItems <= 4)
+                {
+                    Destroy(this.gameObject);
+                }
+                
             }
         }
     }
