@@ -23472,8 +23472,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1970, y: 1060}
+  m_AnchoredPosition: {x: -2.9413, y: 0.9804}
+  m_SizeDelta: {x: 1964.1177, y: 1105.1025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &759985174
 GameObject:
@@ -47083,7 +47083,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 680556911, guid: 5a4105659394a26458f95257095d5652, type: 3}
       - {fileID: -1541696602, guid: 5a4105659394a26458f95257095d5652, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -11, y: 7, z: 0}
