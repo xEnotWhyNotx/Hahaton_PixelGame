@@ -7,6 +7,7 @@ TagManager:
   - Predmet
   - TriggerZone1
   - RefillStation
+  - Korobka
   layers:
   - Default
   - TransparentFX
