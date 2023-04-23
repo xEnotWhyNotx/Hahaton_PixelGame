@@ -7,15 +7,15 @@ public class Cafedreau : Interactable
 {
     public Player player;
     public Camera cam1;
-    public ActivePuzzle puz;
+    public ActivePuzzle2 puz;
     private bool f;
-    private bool completed = false;
+    private bool completed2 = false;
     private bool isActivated;
 
 
     public override void Interact()
     {
-        if (completed == false)
+        if (completed2 == false)
         {
             puz.SetPuzzle(true);
             FindObjectOfType<Player>().SetUI();
@@ -40,7 +40,7 @@ public class Cafedreau : Interactable
     }
     public void setComplete()
     {
-        completed = true;
+        completed2 = true;
         cam1.enabled = true;
         FindObjectOfType<PyatnashkiDoor>().OpenDoor();
     }
